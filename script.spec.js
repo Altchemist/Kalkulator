@@ -19,8 +19,12 @@ describe('multiplication', ()=>{
     });
 });
 
-describe('mutliplication', ()=>{
+describe('division', ()=>{
     test('divide 2 positive numbers', ()=>{
         expect(division(4,2)).toBe(2);
     });
+
+    test('divide numerator with zero', ()=>{
+        expect(division(4,0)).toBe("infinity");
+    })
 });
