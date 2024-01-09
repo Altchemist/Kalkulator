@@ -4,7 +4,7 @@
   "description": "Functions for The Odin Project Calculator",
   "main": "script.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/Altchemist/Kalkulator/issues"
   },
-  "homepage": "https://github.com/Altchemist/Kalkulator#readme"
+  "homepage": "https://github.com/Altchemist/Kalkulator#readme",
+  "dependencies": {
+    "jest": "^29.7.0",
+    "save-dev": "^0.0.1-security"
+  }
 }

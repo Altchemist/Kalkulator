@@ -11,5 +11,7 @@ function multiplication(number1, number2){
 }
 
 function division(numerator, denominator){
-    return number2==0? "infinity" : number1/number2;
+    return denominator==0? "infinity" : numerator/denominator;
 }
+
+module.exports = {addition, substraction, multiplication, division}; 
