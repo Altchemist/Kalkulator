@@ -1,0 +1,19 @@
+{
+  "name": "kalkulator",
+  "version": "1.0.0",
+  "description": "Functions for The Odin Project Calculator",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Altchemist/Kalkulator.git"
+  },
+  "author": "Altchemist",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Altchemist/Kalkulator/issues"
+  },
+  "homepage": "https://github.com/Altchemist/Kalkulator#readme"
+}
