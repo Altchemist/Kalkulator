@@ -83,12 +83,60 @@ function infixToPostfix(expression){
         postfix.push(operatorStack.pop());
     }
 
-    return postfix.toString();
+    return postfix;
+}
+
+function calculatePostFix(postfix){
+    let numberStack = [];
+    let number1 = 0;
+    let number2 = 0;
+
+    for(i=0; i<postfix.length; i++)
+    {
+        currentCharacter = postfix[i];
+
+        if(currentCharacter == "*" 
+        || currentCharacter == "+" 
+        || currentCharacter == "-" 
+        || currentCharacter == "/")
+        {
+            number2 = numberStack.pop();
+            number1 = numberStack.pop();
+
+            switch (currentCharacter)
+            {
+                case "*":
+                    numberStack.push(multiplication(number1, number2));
+                    break;
+                case "/":
+                    numberStack.push(division(number1, number2));
+                    break;
+                case "+":
+                    numberStack.push(addition(number1, number2));
+                    break;
+                case "-":
+                    numberStack.push(substraction(number1, number2));
+                    break;
+            }
+        }
+        else
+        {
+            numberStack.push(parseInt(currentCharacter));
+        }
+    }
+
+    return numberStack.pop();
 }
 
 console.log(infixToPostfix("1+2-3"));
 console.log(infixToPostfix("2/5*9"));
 console.log(infixToPostfix("2+8*(9-3)/6"));
 console.log(infixToPostfix("2+8*9/(3-6)"));
+console.log(calculatePostFix([
+    '2', '8', '9',
+    '*', '3', '6',
+    '-', '/', '+'
+  ]));
 
-module.exports = {addition, substraction, multiplication, division, infixToPostfix, operate, isNumericString, infixToPostfix}; 
+
+module.exports = {addition, substraction, multiplication, division, infixToPostfix, infixToPostfix}; 
