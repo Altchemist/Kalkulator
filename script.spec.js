@@ -1,4 +1,4 @@
-const {addition, substraction, multiplication, division} = require('./script.js');
+const {addition, substraction, multiplication, division, operate, isNumericString, infixToPostfix} = require('./script.js');
 
 describe('addition', ()=>{
     test('adds 2 positive numbers', ()=>{
@@ -20,11 +20,36 @@ describe('multiplication', ()=>{
 });
 
 describe('division', ()=>{
-    test('divide 2 positive numbers', ()=>{
+    test('divide 2 positive numbers', ()=>
+    {
         expect(division(4,2)).toBe(2);
     });
 
-    test('divide numerator with zero', ()=>{
+    test('divide numerator with zero', ()=>
+    {
         expect(division(4,0)).toBe("infinity");
     })
 });
+
+describe("Converting from infix to postfix", ()=>
+{
+    test("Expression with addition and substraction", ()=>
+    {
+        expect(infixToPostfix("1+2-3")).toStrictEqual(["1","2","+","3","-"]);
+    });
+
+    test("Expression with multiplication and division", ()=>
+    {
+        expect(infixToPostfix("2/5*9")).toStrictEqual(["2","5","/","9","*"]);
+    })
+
+    test("Expression with all four operators; multiplication, division, addition, substraction", ()=>
+    {
+        expect(infixToPostfix("2+8*9/3-6")).toStrictEqual(['2', '8', '9','*', '3', '/','+', '6', '-']);
+    })
+
+    test("Expression with all four operators and brackets", ()=>
+    {
+        expect(infixToPostfix("2+8*9/(3-6)")).toStrictEqual(['2', '8', '9','*', '3', '/','+', '6', '-']);
+    })
+})
