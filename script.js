@@ -38,14 +38,16 @@ function infixToPostfix(expression){
 
         if(Object.hasOwn(operators,opr))
         {
-            let currentOperator = operators[opr];
+            let currentOperatorPreference = operators[opr];
 
             let lastOperator = operatorStack[operatorStack.length-1];
+
+            let lastOperatorPreference = operators[lastOperator];
 
             if(opr != ")")
             {
                 // current operator has higher precedence than last operator in stack
-                if(currentOperator > operators[lastOperator] || lastOperator == "(" || operatorStack.length == 0)
+                if(currentOperatorPreference > lastOperatorPreference || lastOperator == "(" || operatorStack.length == 0)
                 {
                     operatorStack.push(opr);
 
@@ -54,10 +56,11 @@ function infixToPostfix(expression){
                 // Curret operator has lower precedence than last operator in stack
                 else
                 {
-                    while(operators[lastOperator] >= currentOperator && operatorStack.length != 0 && lastOperator != "(")
+                    while(lastOperatorPreference >= currentOperatorPreference && operatorStack.length != 0 && lastOperator != "(")
                     {
                         postfix.push(operatorStack.pop());
                         lastOperator = operatorStack[operatorStack.length-1];
+                        lastOperatorPreference = operators[lastOperator];
                     }
 
                     operatorStack.push(opr);
@@ -78,6 +81,7 @@ function infixToPostfix(expression){
             postfix.push(infixArray[i]);
         }
     }
+
     // Pop off remaining operators
     while(operatorStack.length != 0){
         postfix.push(operatorStack.pop());
@@ -131,7 +135,7 @@ function calculatePostFix(postfix){
 console.log(infixToPostfix("1+2-3"));
 console.log(infixToPostfix("2/5*9"));
 console.log(infixToPostfix("2+8*(9-3)/6"));
-console.log(infixToPostfix("2+8*9/(3-6)"));
+console.log(infixToPostfix("2.2+8*9/(3-6)"));
 console.log(calculatePostFix([
     '2', '8', '9',
     '*', '3', '6',
@@ -139,4 +143,4 @@ console.log(calculatePostFix([
   ]));
 
 
-module.exports = {addition, substraction, multiplication, division, infixToPostfix, infixToPostfix}; 
+module.exports = {addition, substraction, multiplication, division, infixToPostfix, calculatePostFix}; 
