@@ -1,0 +1,46 @@
+body {
+    background-color: bisque
+}
+
+header {
+    display: flex;
+    width: 500px;
+    height: 50px;
+    margin: auto;
+    background-color: azure;
+    margin-top: 50px;
+    align-items: center;
+    justify-content: center;
+}
+
+h1 {
+    font-family: 'Courier New', Courier, monospace;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    height: 700px;
+    margin: auto;
+    align-items: center;
+    background-color: azure;
+}
+
+#screen {
+    display: flex;
+    width:450px;
+    height:150px;
+    align-items: start;
+    justify-content:start;
+    background-color: black;
+    overflow: hidden;
+}
+
+#button-grid{
+    display: flex;
+    width: 450px;
+    height: 500px;
+    margin-top: 20px;
+    background-color: black;
+}
