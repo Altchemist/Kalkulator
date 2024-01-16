@@ -29,12 +29,32 @@ main {
 
 #screen {
     display: flex;
+    flex-direction: column;
     width:450px;
     height:150px;
-    align-items: start;
-    justify-content:start;
-    background-color: black;
+    background-color:cadetblue;
     overflow: hidden;
+}
+
+.in-screen{
+    width: 450px;
+    height:75px;
+    padding:10px;
+    box-sizing: border-box;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 24px;
+    text-wrap:stable;
+}
+
+#expression
+{
+    text-align: left;
+    text-wrap:wrap;
+}
+
+#result
+{
+    text-align: right;
 }
 
 #button-grid{
