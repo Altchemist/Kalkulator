@@ -32,7 +32,7 @@ main {
     flex-direction: column;
     width:450px;
     height:150px;
-    background-color:cadetblue;
+    background-color:darkgray;
     overflow: hidden;
 }
 
@@ -58,9 +58,92 @@ main {
 }
 
 #button-grid{
-    display: flex;
+    display: grid;
+    grid-template-columns: [c1] 90px [c2] 90px [c3] 90px [c4] 90px [c5] 90px [end];
+    grid-template-rows: auto;
+    grid-template: 
+    "seven eight nine del ac"
+    "four five six multip divide"
+    "one two three plus minus"
+    "zero decim power equal equal";
     width: 450px;
     height: 500px;
     margin-top: 20px;
-    background-color: black;
+    background-color:cornflowerblue;
+}
+
+#zero{
+    grid-area:zero;
+}
+
+#one{
+    grid-area: one;
+}
+
+#two{
+    grid-area: two;
+}
+
+#three{
+    grid-area:three;
+}
+
+#four{
+    grid-area:four;
+}
+
+#five{
+    grid-area:five;
+}
+
+#six{
+    grid-area:six
+}
+
+#seven{
+    grid-area: seven;
+}
+
+#eight{
+    grid-area: eight;
+}
+
+#nine{
+    grid-area: nine;
+}
+
+#plus{
+    grid-area: plus;
+}
+
+#minus{
+    grid-area: minus;   
+}
+
+#mutiply{
+    grid-area: multip;   
+}
+
+#divide{
+    grid-area: divide;   
+}
+
+#equal{
+    grid-area: equal;   
+}
+
+#power{
+    grid-area: power;   
+}
+
+#decimal{
+    grid-area: decim;   
+}
+
+#del{
+    grid-area: del;
+}
+
+#ac{
+    grid-area: ac;
 }
