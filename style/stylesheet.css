@@ -59,17 +59,29 @@ main {
 
 #button-grid{
     display: grid;
-    grid-template-columns: [c1] 90px [c2] 90px [c3] 90px [c4] 90px [c5] 90px [end];
+    grid-template-columns: [c1] 87.6px [c2] 87.6px [c3] 87.6px [c4] 87.6px [c5] 87.6px [end];
     grid-template-rows: auto;
-    grid-template: 
+    column-gap: 3px;
+    row-gap: 3px;
+    grid-template-areas: 
     "seven eight nine del ac"
-    "four five six multip divide"
+    "four five six divide multip"
     "one two three plus minus"
     "zero decim power equal equal";
     width: 450px;
     height: 500px;
     margin-top: 20px;
     background-color:cornflowerblue;
+    padding:3px;
+    border-radius: 6px;
+}
+
+.button{
+    padding:0;
+    border-radius: 6px;
+    border:0;
+    font-size: 20px;
+
 }
 
 #zero{
@@ -137,13 +149,32 @@ main {
 }
 
 #decimal{
-    grid-area: decim;   
+    grid-area: decim; 
+
 }
 
 #del{
+    font-weight: bold;
     grid-area: del;
 }
 
 #ac{
+    font-weight: bold;
     grid-area: ac;
+}
+
+#one:hover, #two:hover, #three:hover, #four:hover, #five:hover, #six:hover, #seven:hover, #eight:hover, #nine:hover, #zero:hover{
+    background-color:lightseagreen; 
+} 
+
+#del:hover, #ac:hover{
+    background-color:lightcoral;
+}
+
+#plus:hover, #minus:hover, #multiply:hover, #divide:hover, #power:hover, #decimal:hover{
+    background-color:darkslateblue;
+}
+
+#equal:hover{
+    background-color:lightgreen;
 }
