@@ -1,114 +1,103 @@
-function addition(number1, number2){
+function addition(number1, number2) {
     return number1 + number2;
 }
 
-function substraction(number1, number2){
+function substraction(number1, number2) {
     return number1 - number2
 }
 
-function multiplication(number1, number2){
+function multiplication(number1, number2) {
     return number1 * number2
 }
 
-function division(numerator, denominator){
-    return denominator==0? "infinity" : numerator/denominator;
+function division(numerator, denominator) {
+    return denominator == 0 ? "infinity" : numerator / denominator;
 }
 
-function infixToPostfix(expression){
+function infixToPostfix(expression) {
     let infixArray = Array.from(expression);
 
     let operatorStack = [];
 
-    let postfix = []; 
+    let postfix = [];
 
-    const operators = 
+    const operators =
     {
-        ')':4,
-        '(':3,
+        ')': 4,
+        '(': 3,
         '^': 2,
-        '/':1,
-        '*':1,
-        '+':0,
-        '-':0 
+        '/': 1,
+        '*': 1,
+        '+': 0,
+        '-': 0
     };
 
-    for(i=0; i<infixArray.length; i++)
-    {
+    for (i = 0; i < infixArray.length; i++) {
         opr = infixArray[i];
 
-        if(Object.hasOwn(operators,opr))
-        {
+        if (Object.hasOwn(operators, opr)) {
             let currentOperatorPreference = operators[opr];
 
-            let lastOperator = operatorStack[operatorStack.length-1];
+            let lastOperator = operatorStack[operatorStack.length - 1];
 
             let lastOperatorPreference = operators[lastOperator];
 
-            if(opr != ")")
-            {
+            if (opr != ")") {
                 // current operator has higher precedence than last operator in stack
-                if(currentOperatorPreference > lastOperatorPreference || lastOperator == "(" || operatorStack.length == 0)
-                {
+                if (currentOperatorPreference > lastOperatorPreference || lastOperator == "(" || operatorStack.length == 0) {
                     operatorStack.push(opr);
 
                 }
 
                 // Curret operator has lower precedence than last operator in stack
-                else
-                {
-                    while(lastOperatorPreference >= currentOperatorPreference && operatorStack.length != 0 && lastOperator != "(")
-                    {
+                else {
+                    while (lastOperatorPreference >= currentOperatorPreference && operatorStack.length != 0 && lastOperator != "(") {
                         postfix.push(operatorStack.pop());
-                        lastOperator = operatorStack[operatorStack.length-1];
+                        lastOperator = operatorStack[operatorStack.length - 1];
                         lastOperatorPreference = operators[lastOperator];
                     }
 
                     operatorStack.push(opr);
                 }
             }
-            else
-            {
-                while(lastOperator != "("){
+            else {
+                while (lastOperator != "(") {
                     postfix.push(operatorStack.pop());
-                    lastOperator = operatorStack[operatorStack.length-1];
+                    lastOperator = operatorStack[operatorStack.length - 1];
                 }
 
                 operatorStack.pop(); // remove the "("
             }
         }
-        else
-        {
+        else {
             postfix.push(infixArray[i]);
         }
     }
 
     // Pop off remaining operators
-    while(operatorStack.length != 0){
+    while (operatorStack.length != 0) {
         postfix.push(operatorStack.pop());
     }
 
     return postfix;
 }
 
-function calculatePostFix(postfix){
+function calculatePostFix(postfix) {
     let numberStack = [];
     let number1 = 0;
     let number2 = 0;
 
-    for(i=0; i<postfix.length; i++)
-    {
+    for (i = 0; i < postfix.length; i++) {
         currentCharacter = postfix[i];
 
-        if(currentCharacter == "*" 
-        || currentCharacter == "+" 
-        || currentCharacter == "-" 
-        || currentCharacter == "/")
-        {
+        if (currentCharacter == "*"
+            || currentCharacter == "+"
+            || currentCharacter == "-"
+            || currentCharacter == "/") {
             number2 = numberStack.pop();
             number1 = numberStack.pop();
 
-            switch (currentCharacter)
-            {
+            switch (currentCharacter) {
                 case "*":
                     numberStack.push(multiplication(number1, number2));
                     break;
@@ -123,8 +112,7 @@ function calculatePostFix(postfix){
                     break;
             }
         }
-        else
-        {
+        else {
             numberStack.push(parseInt(currentCharacter));
         }
     }
@@ -140,7 +128,89 @@ console.log(calculatePostFix([
     '2', '8', '9',
     '*', '3', '6',
     '-', '/', '+'
-  ]));
+]));
 
+function main() {
+    let expression = "";
+    let one = document.getElementById("one");
+    let two = document.getElementById("two");
+    let three = document.getElementById("three");
+    let four = document.getElementById("four");
+    let five = document.getElementById("five");
+    let six = document.getElementById("six");
+    let seven = document.getElementById("seven");
+    let eight = document.getElementById("eight");
+    let nine = document.getElementById("nine");
+    let zero = document.getElementById("zero");
+    let plus = document.getElementById("plus");
+    let minus = document.getElementById("minus");
+    let multiply = document.getElementById("multiply");
+    let divide = document.getElementById("divide");
+    let equal = document.getElementById("equal");
+    let power = document.getElementById("power");
+    let decimal = document.getElementById("decimal");
+    let del = document.getElementById("del");
+    let ac = document.getElementById("ac");
+    let expressionScreen = document.getElementById("expression"); 
+    let resultScreen = document.getElementById("result");
 
-module.exports = {addition, substraction, multiplication, division, infixToPostfix, calculatePostFix}; 
+    let numberButtons = document.querySelectorAll(".number");
+
+    for(button of numberButtons){
+        let number = button.textContent;
+        console.log(button.textContent);
+        button.addEventListener("click", ()=>{
+            expression = expression.concat(number);
+            expressionScreen.textContent = expression;
+        });
+    }
+
+    del.addEventListener("click", ()=>{
+        expression = expression.substring(0, expression.length-1);
+        expressionScreen.textContent = expression;
+    })
+
+    ac.addEventListener("click", ()=>{
+        expression = "";
+        expressionScreen.textContent = expression;
+    })
+
+    plus.addEventListener("click", ()=>{
+        expression = expression.concat("+");
+        expressionScreen.textContent = expression;
+    });
+
+    minus.addEventListener("click", ()=>{
+        expression = expression.concat("-");
+        expressionScreen.textContent = expression;
+    });
+
+    multiply.addEventListener("click", ()=>{
+        expression = expression.concat("*");
+        expressionScreen.textContent = expression;
+    });
+
+    divide.addEventListener("click", ()=>{
+        expression = expression.concat("/");
+        expressionScreen.textContent = expression;
+    });
+
+    power.addEventListener("click", ()=>{
+        expression = expression.concat("^");
+        expressionScreen.textContent = expression;
+    })
+
+    decimal.addEventListener("click", ()=>{
+        expression = expression.concat(".");
+        expressionScreen.textContent = expression;
+    })
+
+    equal.addEventListener("click", ()=>{
+        let postfix = infixToPostfix(expression);
+        let result = calculatePostFix(postfix);
+        resultScreen.textContent = result;
+    })
+}
+
+main();
+// module.exports = {addition, substraction, multiplication, division, infixToPostfix, calculatePostFix}; 
