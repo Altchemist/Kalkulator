@@ -27,7 +27,7 @@ function power(number, power)
 }
 
 function infixToPostfix(expression) {
-    let infixArray = Array.from(expression);
+    let infixArray = parseExpression(expression);
 
     let operatorStack = [];
 
@@ -112,7 +112,7 @@ function calculatePostFix(postfix) {
             number2 = numberStack.pop();
             number1 = numberStack.pop();
 
-            switch (currentCharacter) 
+            switch(currentCharacter) 
             {
                 case "*":
                     numberStack.push(multiplication(number1, number2));
@@ -126,38 +126,69 @@ function calculatePostFix(postfix) {
                 case "-":
                     numberStack.push(substraction(number1, number2));
                     break;
+
+                case "^":
+                    numberStack.push(power(number1, number2));
+                    break;                
             }
         }
         else {
             numberStack.push(parseInt(currentCharacter));
         }
-    }
+    }''
 
     return numberStack.pop();
 }
 
-console.log(infixToPostfix("1+2-3"));
-console.log(infixToPostfix("2/5*9"));
-console.log(infixToPostfix("2+8*(9-3)/6"));
-console.log(infixToPostfix("2.2+8*9/(3-6)"));
-console.log(calculatePostFix([
-    '2', '8', '9',
-    '*', '3', '6',
-    '-', '/', '+'
-]));
+function parseExpression(expression)
+{
+    let infixArray = Array.from(expression);
+    let item = "";
+    formatedArray = []
+    let hasDecimal = false;
 
-function main() {
+    for(character of infixArray){
+        if(character == "+" || character == "*" || character == "/" || character == "-" || character == "^"){
+            if(hasDecimal)
+            {
+                formatedArray.push(parseFloat(item));
+                hasDecimal = false;
+            }
+            else
+            {
+                formatedArray.push(parseInt(item));   
+            }
+            item = ""
+            formatedArray.push(character);
+        }
+        else
+        {
+            if(character == ".")
+            {
+                hasDecimal = true;
+            }
+            item = item.concat(character);
+        }
+    }
+
+    if(hasDecimal)
+    {
+        formatedArray.push(parseFloat(item));
+        hasDecimal = false;
+    }
+    else
+    {
+        formatedArray.push(parseInt(item));   
+    }
+
+    return formatedArray;
+}
+
+function main() 
+{
+    let result= "";
+    let isFloat = false;
     let expression = "";
-    let one = document.getElementById("one");
-    let two = document.getElementById("two");
-    let three = document.getElementById("three");
-    let four = document.getElementById("four");
-    let five = document.getElementById("five");
-    let six = document.getElementById("six");
-    let seven = document.getElementById("seven");
-    let eight = document.getElementById("eight");
-    let nine = document.getElementById("nine");
-    let zero = document.getElementById("zero");
     let plus = document.getElementById("plus");
     let minus = document.getElementById("minus");
     let multiply = document.getElementById("multiply");
