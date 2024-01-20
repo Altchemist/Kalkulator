@@ -1,5 +1,5 @@
 body {
-    background-color: bisque
+    background-color:hsl(240, 4%, 16%);
 }
 
 header {
@@ -7,7 +7,7 @@ header {
     width: 500px;
     height: 50px;
     margin: auto;
-    background-color: azure;
+    background-color: #bec3c6;
     margin-top: 50px;
     align-items: center;
     justify-content: center;
@@ -24,7 +24,7 @@ main {
     height: 700px;
     margin: auto;
     align-items: center;
-    background-color: azure;
+    background-color: #bec3c6;
 }
 
 #screen {
@@ -32,7 +32,7 @@ main {
     flex-direction: column;
     width:450px;
     height:150px;
-    background-color:darkgray;
+    background-color:#3B3D35;;
     overflow: hidden;
 }
 
@@ -71,7 +71,7 @@ main {
     width: 450px;
     height: 500px;
     margin-top: 20px;
-    background-color:cornflowerblue;
+    background-color: #b5bda5;
     padding:3px;
     border-radius: 6px;
 }
@@ -82,6 +82,13 @@ main {
     border:0;
     font-size: 20px;
 
+}
+
+.number{
+    padding:0;
+    border-radius: 6px;
+    border:0;
+    font-size: 20px;
 }
 
 #zero{
@@ -166,6 +173,7 @@ main {
 #ans{
     grid-area: ans;
 }
+
 #one:hover, #two:hover, #three:hover, #four:hover, #five:hover, #six:hover, #seven:hover, #eight:hover, #nine:hover, #zero:hover{
     background-color:lightseagreen; 
 } 
