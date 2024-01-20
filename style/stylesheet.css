@@ -67,7 +67,7 @@ main {
     "seven eight nine del ac"
     "four five six divide multip"
     "one two three plus minus"
-    "zero decim power equal equal";
+    "zero decim ans power equal";
     width: 450px;
     height: 500px;
     margin-top: 20px;
@@ -163,6 +163,9 @@ main {
     grid-area: ac;
 }
 
+#ans{
+    grid-area: ans;
+}
 #one:hover, #two:hover, #three:hover, #four:hover, #five:hover, #six:hover, #seven:hover, #eight:hover, #nine:hover, #zero:hover{
     background-color:lightseagreen; 
 } 
