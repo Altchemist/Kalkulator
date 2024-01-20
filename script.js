@@ -14,6 +14,18 @@ function division(numerator, denominator) {
     return denominator == 0 ? "infinity" : numerator / denominator;
 }
 
+function power(number, power)
+{
+    let result = number;
+
+    for(i=1; i<power; i++)
+    {
+        result *= number;
+    }
+
+    return power==0?1:result;
+}
+
 function infixToPostfix(expression) {
     let infixArray = Array.from(expression);
 
@@ -93,11 +105,15 @@ function calculatePostFix(postfix) {
         if (currentCharacter == "*"
             || currentCharacter == "+"
             || currentCharacter == "-"
-            || currentCharacter == "/") {
+            || currentCharacter == "/"
+            || currentCharacter == "^"
+            )
+            {
             number2 = numberStack.pop();
             number1 = numberStack.pop();
 
-            switch (currentCharacter) {
+            switch (currentCharacter) 
+            {
                 case "*":
                     numberStack.push(multiplication(number1, number2));
                     break;
@@ -158,7 +174,6 @@ function main() {
 
     for(button of numberButtons){
         let number = button.textContent;
-        console.log(button.textContent);
         button.addEventListener("click", ()=>{
             expression = expression.concat(number);
             expressionScreen.textContent = expression;
