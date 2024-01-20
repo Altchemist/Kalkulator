@@ -215,44 +215,55 @@ function main()
     del.addEventListener("click", ()=>{
         expression = expression.substring(0, expression.length-1);
         expressionScreen.textContent = expression;
+        isFloat = false;
     })
 
     ac.addEventListener("click", ()=>{
         expression = "";
+        resultScreen.textContent = "";
         expressionScreen.textContent = expression;
     })
 
     plus.addEventListener("click", ()=>{
         expression = expression.concat("+");
         expressionScreen.textContent = expression;
+        isFloat = false;
     });
 
     minus.addEventListener("click", ()=>{
         expression = expression.concat("-");
         expressionScreen.textContent = expression;
+        isFloat = false;
     });
 
     multiply.addEventListener("click", ()=>{
         expression = expression.concat("*");
         expressionScreen.textContent = expression;
+        isFloat = false;
     });
 
     divide.addEventListener("click", ()=>{
-        expression = expression.concat("/");
+        expression = expression.concat("÷");
         expressionScreen.textContent = expression;
+        isFloat = false;
     });
 
     power.addEventListener("click", ()=>{
         expression = expression.concat("^");
         expressionScreen.textContent = expression;
+        isFloat = false;
     })
 
     decimal.addEventListener("click", ()=>{
-        expression = expression.concat(".");
-        expressionScreen.textContent = expression;
+        if(!isFloat){
+            expression = expression.concat(".");
+            expressionScreen.textContent = expression;
+            isFloat = true;    
+        }
     })
 
     equal.addEventListener("click", ()=>{
+        expression = expression.replace("÷", "/");
         let postfix = infixToPostfix(expression);
         result = calculatePostFix(postfix);
         resultScreen.textContent = result;
