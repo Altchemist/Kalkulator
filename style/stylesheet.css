@@ -11,6 +11,8 @@ header {
     margin-top: 50px;
     align-items: center;
     justify-content: center;
+    border-top-right-radius: 30px;
+    border-top-left-radius: 30px;
 }
 
 h1 {
@@ -25,6 +27,8 @@ main {
     margin: auto;
     align-items: center;
     background-color: #bec3c6;
+    border-bottom-right-radius: 30px;
+    border-bottom-left-radius: 30px;
 }
 
 #screen {
@@ -34,6 +38,7 @@ main {
     height:150px;
     background-color:#3B3D35;;
     overflow: hidden;
+    color: white;
 }
 
 .in-screen{
@@ -174,7 +179,7 @@ main {
     grid-area: ans;
 }
 
-#one:hover, #two:hover, #three:hover, #four:hover, #five:hover, #six:hover, #seven:hover, #eight:hover, #nine:hover, #zero:hover{
+#decimal:hover, #one:hover, #two:hover, #three:hover, #four:hover, #five:hover, #six:hover, #seven:hover, #eight:hover, #nine:hover, #zero:hover{
     background-color:lightseagreen; 
 } 
 
@@ -182,7 +187,7 @@ main {
     background-color:lightcoral;
 }
 
-#plus:hover, #minus:hover, #multiply:hover, #divide:hover, #power:hover, #decimal:hover{
+#plus:hover, #minus:hover, #multiply:hover, #divide:hover, #power:hover{
     background-color:darkslateblue;
 }
 
