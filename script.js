@@ -198,6 +198,7 @@ function main()
     let decimal = document.getElementById("decimal");
     let del = document.getElementById("del");
     let ac = document.getElementById("ac");
+    let answer = document.getElementById("ans")
     let expressionScreen = document.getElementById("expression"); 
     let resultScreen = document.getElementById("result");
 
@@ -253,9 +254,14 @@ function main()
 
     equal.addEventListener("click", ()=>{
         let postfix = infixToPostfix(expression);
-        let result = calculatePostFix(postfix);
+        result = calculatePostFix(postfix);
         resultScreen.textContent = result;
-    })
+    });
+
+    answer.addEventListener("click", ()=>{
+        expression = result.toString();
+        expressionScreen.textContent = expression;
+    });
 }
 
 main();
