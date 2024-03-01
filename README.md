@@ -1,6 +1,6 @@
 # Kalkulator
-This is the final project of 'The Odin Project' Foundation.
+The final project of 'The Odin Project' Foundation.
 
-It is a web application calculator with the user interface written with HTML and CSS and the logic written in Javscript. The core of the logic is the Postfix to Infix.
+A web application calculator with a user interface implemented in HTML and CSS. It uses Postfix-to-Infix methodology to translate user input into a computer-calculable format, for calculation. 
 
 The web application can be accessed [here](https://altchemist.github.io/Kalkulator/)
